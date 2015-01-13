@@ -2,12 +2,12 @@ battery_height=5.9;
 battery_width=35.4;
 battery_length=40.3;
 
-contact_width=2.5;
-contact_height=5;
+contact_width=2;
+contact_height=4;
 
-positive_pos=22;
-diag_pos=26;
-negative_pos=30;
+positive_pos=24;
+diag_pos=27.25;
+negative_pos=30.5;
 
 wire_width=1.5;
 wire_depth=1.5;
@@ -22,25 +22,25 @@ difference()
    // Corner Key
    translate([0,0,battery_height])
    {
-      cube([4,4,4], center=true);
+      cube([4,4,6], center=true);
    }
 
 	// Corner Key
    translate([0,battery_width,battery_height])
    {
-      cube([4,4,4], center=true);
+      cube([4,2,6], center=true);
    }
 
    // Battery Contact 1
 	translate([0,positive_pos,battery_height/2])
    {
-      cube([1,contact_width,contact_height], center=true);
+      cube([2,contact_width,contact_height], center=true);
    }
 
    // Battery Contact 1 Connection
 	translate([0,positive_pos,battery_height])
    {
-      cube([10,contact_width,1], center=true);
+      cube([10,contact_width,2], center=true);
    }
 
    // Battery Contact 1 Wire
@@ -59,12 +59,12 @@ difference()
       cube([wire_width,7,wire_depth*2], center=true);
    }
 	// Wire corner square
-	translate([(10+15/2)+(corner_square_side/2),positive_pos-(wire_width/2)-6,battery_height])
+	translate([(10+15/2)+(corner_square_side/2),positive_pos-(wire_width/2)-7,battery_height])
    {
       cube([corner_square_side,corner_square_side,wire_depth*2], center=true);
    }
    // Battery Contact 1 Wire
-	translate([30,14.5,battery_height])
+	translate([30,15.5,battery_height])
    {
       cube([24,wire_width,wire_depth*2], center=true);
    }
@@ -72,19 +72,24 @@ difference()
 	// Battery Contact Diagnostic
 	translate([0,diag_pos,battery_height/2])
    {
-      cube([1,contact_width,contact_height], center=true);
+      cube([2,contact_width,contact_height], center=true);
    }
+   // Anti-overhang
+	translate([0,diag_pos,battery_height])
+   {
+      cube([2,contact_width,contact_height], center=true);
+   }	
 
    // Battery Contact 2
 	translate([0,negative_pos,battery_height/2])
    {
-      cube([1,contact_width,contact_height], center=true);
+      cube([2,contact_width,contact_height], center=true);
    }
 
    // Battery Contact 1 Connection
 	translate([0,negative_pos,battery_height])
    {
-      cube([10,contact_width,1], center=true);
+      cube([10,contact_width,2], center=true);
    }
 	// Battery Contact 1 Wire
 	translate([15,negative_pos,battery_height])
@@ -107,7 +112,7 @@ difference()
       cube([corner_square_side,corner_square_side,wire_depth*2], center=true);
    }
    // Battery Contact 1 Wire
-	translate([35,17,battery_height])
+	translate([35,18,battery_height])
    {
       cube([15,6.5,(wire_depth+2.5)*2], center=true);
    }
